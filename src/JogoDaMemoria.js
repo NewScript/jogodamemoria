@@ -14,5 +14,14 @@ class JogoDaMemoria{
 
     inicializar(){
         this.tela.atualizarImagens(this.heroisIniciais);
+        this.tela.configurarBotaoJogar(this.jogar.bind(this));
+    };
+
+    embaralhar(){
+        
+    }
+
+    jogar(){
+        console.log('clicou');
     };
 };
