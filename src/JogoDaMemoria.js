@@ -17,11 +17,18 @@ class JogoDaMemoria{
         this.tela.configurarBotaoJogar(this.jogar.bind(this));
     };
 
-    embaralhar(){
-        
-    }
+embaralhar(){
+    const copias = this.heroisIniciais
+    .concat(this.heroisIniciais)
+    .map(item => {
+        return Object.assign({}, item, { id: Math.random() / 0.5})
+    })
+    .sort(() => Math.random() - 0.5)
 
-    jogar(){
-        console.log('clicou');
-    };
+    this.tela.atualizarImagens(copias);
+}
+
+jogar(){
+    this.embaralhar();
+};
 };
