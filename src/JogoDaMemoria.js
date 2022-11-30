@@ -11,7 +11,6 @@ class JogoDaMemoria{
         ];
         this.iconePadrao = './arquivos/ninja.svg'
         this.heroisEscondidos = []
-
     };
 
     inicializar(){
