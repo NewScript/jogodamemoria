@@ -9,6 +9,8 @@ class JogoDaMemoria{
             {img: './arquivos/flash.svg', name: 'Flash'},
             {img: './arquivos/wolverine.svg', name: 'Wolverine'}
         ];
+        this.iconePadrao = './arquivos/ninja.svg'
+        this.heroisEscondidos = []
 
     };
 
@@ -17,18 +19,32 @@ class JogoDaMemoria{
         this.tela.configurarBotaoJogar(this.jogar.bind(this));
     };
 
-embaralhar(){
-    const copias = this.heroisIniciais
-    .concat(this.heroisIniciais)
-    .map(item => {
-        return Object.assign({}, item, { id: Math.random() / 0.5})
-    })
-    .sort(() => Math.random() - 0.5)
+    embaralhar(){
+        const copias = this.heroisIniciais
+        .concat(this.heroisIniciais)
+        .map(item => {
+            return Object.assign({}, item, { id: Math.random() / 0.5})
+        })
+        .sort(() => Math.random() - 0.5)
 
-    this.tela.atualizarImagens(copias);
-}
+        this.tela.atualizarImagens(copias)
 
-jogar(){
-    this.embaralhar();
-};
+        setTimeout(() => {
+            this.esconderHerois(copias)
+        }, 1000);
+    }
+
+    esconderHerois(herois){
+        const heroisOcultos = herois.map(({nome, id}) => ({
+            id,
+            nome,
+            img: this.iconePadrao
+        }))
+        this.tela.atualizarImagens(heroisOcultos)
+        this.heroisEscondidos = heroisOcultos
+    }
+
+    jogar(){
+        this.embaralhar();
+    };
 };
