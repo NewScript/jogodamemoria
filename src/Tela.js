@@ -3,16 +3,16 @@ const ID_BTN_JOGAR = 'jogar';
 
 class Tela{
 
-    static obterCodigoHtml(item){
-        return `
-        <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-            <img src="${item.img}" name="${item.nome}" class="card-img-top" alt="...">
-        </div>
-        <br />
-        </div>
-        `
-    };
+static obterCodigoHtml(item){
+    return `
+    <div class="col-md-3">
+        <div class="card" style="width: 18rem;" onclick="window.verificarSelecao('${item.id}', '${item.nome}')" >
+        <img src="${item.img}" name="${item.nome}" class="card-img-top" alt="...">
+    </div>
+    <br />
+    </div>
+    `
+};
 
     static alterarConteudoHtml(codigoHtml){
         const conteudo = document.getElementById(ID_CONTEUDO);
@@ -36,6 +36,10 @@ class Tela{
     static configurarBotaoJogar(funcaoOnClick){
         const btnJogar = document.getElementById(ID_BTN_JOGAR);
         btnJogar.onclick = funcaoOnClick;
+    }
+
+    static configurarBotaoVerificarSelecao(funcaoOnClick){
+        window.verificarSelecao = funcaoOnClick;
     }
 
 };

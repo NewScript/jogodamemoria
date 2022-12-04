@@ -4,18 +4,20 @@ class JogoDaMemoria{
     constructor({tela}){
         this.tela = tela;
         this.heroisIniciais = [
-            {img: './arquivos/america.svg', name: 'Capitão América'},
-            {img: './arquivos/batman.svg', name: 'Batman'},
-            {img: './arquivos/flash.svg', name: 'Flash'},
-            {img: './arquivos/wolverine.svg', name: 'Wolverine'}
+            {img: './arquivos/america.svg', nome: 'Capitão América'},
+            {img: './arquivos/batman.svg', nome: 'Batman'},
+            {img: './arquivos/flash.svg', nome: 'Flash'},
+            {img: './arquivos/wolverine.svg', nome: 'Wolverine'}
         ];
         this.iconePadrao = './arquivos/ninja.svg'
         this.heroisEscondidos = []
+        this.heroisSelecionados = []
     };
 
     inicializar(){
         this.tela.atualizarImagens(this.heroisIniciais);
         this.tela.configurarBotaoJogar(this.jogar.bind(this));
+        this.tela.configurarBotaoVerificarSelecao(this.verificarSelecao.bind(this));
     };
 
     embaralhar(){
@@ -41,6 +43,11 @@ class JogoDaMemoria{
         }))
         this.tela.atualizarImagens(heroisOcultos)
         this.heroisEscondidos = heroisOcultos
+    }
+
+    verificarSelecao(id, nome){
+        const item = { id, nome};
+        const heroisSelecionados = this.heroisSelecionados.length
     }
 
     jogar(){
