@@ -48,6 +48,22 @@ class JogoDaMemoria{
     verificarSelecao(id, nome){
         const item = { id, nome};
         const heroisSelecionados = this.heroisSelecionados.length
+        switch(heroisSelecionados){
+            case 0:
+                this.heroisSelecionados.push(item)
+            break
+            case 1:
+                const [opcao1] = this.heroisSelecionados
+                this.heroisSelecionados = []
+                if(opcao1.nome === item.nome &&
+                    opcao1.id !== item.id
+                ){
+                    alert(`Combinação correta: ${item.nome}`)
+                    return
+                }
+                alert(`Combinação incorreta!!`)
+            break
+        }
     }
 
     jogar(){
