@@ -1,3 +1,5 @@
+const util = Util;
+
 const ID_CONTEUDO = 'conteudo';
 const ID_BTN_JOGAR = 'jogar';
 const ID_MENSAGEM = 'mensagem';
@@ -59,7 +61,7 @@ static obterCodigoHtml(item){
         elementosHtml.forEach( item => (item.src = img))
     }
 
-    static exibirMensagem(sucesso = true){
+static async exibirMensagem(sucesso = true){
         const elemento = document.getElementById(ID_MENSAGEM)
         if(sucesso){
             elemento.classList.remove(MENSAGENS.erro.classe)
@@ -71,6 +73,8 @@ static obterCodigoHtml(item){
             elemento.innerText = MENSAGENS.erro.texto  
         }
         elemento.classList.remove(CLASSE_INVISIBLE)
+        await util.timeOut(1000);
+        elemento.classList.add(CLASSE_INVISIBLE);
     }
 
 };
