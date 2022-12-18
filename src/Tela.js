@@ -88,4 +88,21 @@ static obterCodigoHtml(item){
         carregando.classList.add(CLASSE_INVISIBLE);
     }
 
+    static iniciarContador(){
+        let contarAte = 3;
+        const elementoContador = document.getElementById(ID_CONTADOR)
+        const identificadorNoTexto = "$$contador"
+        const textoPadrao = `Começando em ${identificadorNoTexto} segundos...`
+        const atualizarTexto = () =>
+            (elementoContador.innerHTML = textoPadrao.replace(identificadorNoTexto, contarAte--))
+        atualizarTexto();
+        const idDoIntervalo = setInterval(atualizarTexto, 1000)
+        return idDoIntervalo
+    }
+
+    static limparContador(idDoIntervalo){
+        clearInterval(idDoIntervalo)
+        document.getElementById(ID_CONTADOR).innerHTML = ""
+    }
+
 }; 
