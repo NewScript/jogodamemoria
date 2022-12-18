@@ -1,8 +1,9 @@
 class JogoDaMemoria{
 
     // O constructor está recebendo um objeto
-    constructor({tela}){
+    constructor({tela, util}){
         this.tela = tela;
+        this.util = util;
         this.heroisIniciais = [
             {img: './arquivos/america.svg', nome: 'Capitão América'},
             {img: './arquivos/batman.svg', nome: 'Batman'},
@@ -20,7 +21,7 @@ class JogoDaMemoria{
         this.tela.configurarBotaoVerificarSelecao(this.verificarSelecao.bind(this));
     };
 
-    embaralhar(){
+    async embaralhar(){
         const copias = this.heroisIniciais
         .concat(this.heroisIniciais)
         .map(item => {
@@ -30,9 +31,8 @@ class JogoDaMemoria{
 
         this.tela.atualizarImagens(copias)
 
-        setTimeout(() => {
-            this.esconderHerois(copias)
-        }, 1000);
+        await this.util.timeOut(1000)
+        this.esconderHerois(copias)
     }
 
     esconderHerois(herois){
