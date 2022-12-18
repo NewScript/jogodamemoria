@@ -4,6 +4,8 @@ const ID_CONTEUDO = 'conteudo';
 const ID_BTN_JOGAR = 'jogar';
 const ID_MENSAGEM = 'mensagem';
 const CLASSE_INVISIBLE = 'invisible';
+const ID_CARREGANDO = 'carregando';
+const ID_CONTADOR = 'contador';
 const MENSAGENS = {
     sucesso: {
         texto: 'Combinação correta',
@@ -61,7 +63,7 @@ static obterCodigoHtml(item){
         elementosHtml.forEach( item => (item.src = img))
     }
 
-static async exibirMensagem(sucesso = true){
+    static async exibirMensagem(sucesso = true){
         const elemento = document.getElementById(ID_MENSAGEM)
         if(sucesso){
             elemento.classList.remove(MENSAGENS.erro.classe)
@@ -77,4 +79,13 @@ static async exibirMensagem(sucesso = true){
         elemento.classList.add(CLASSE_INVISIBLE);
     }
 
-};
+    static exibirCarregando(mostrar = true){
+        const carregando = document.getElementById(ID_CARREGANDO);
+        if(mostrar){
+            carregando.classList.remove(CLASSE_INVISIBLE)
+            return
+        }
+        carregando.classList.add(CLASSE_INVISIBLE);
+    }
+
+}; 

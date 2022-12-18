@@ -30,9 +30,10 @@ class JogoDaMemoria{
         .sort(() => Math.random() - 0.5)
 
         this.tela.atualizarImagens(copias)
-
+        this.tela.exibirCarregando()
         await this.util.timeOut(1000)
         this.esconderHerois(copias)
+        this.tela.exibirCarregando(false)
     }
 
     esconderHerois(herois){
