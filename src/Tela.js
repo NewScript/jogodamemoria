@@ -6,6 +6,7 @@ const ID_MENSAGEM = 'mensagem';
 const CLASSE_INVISIBLE = 'invisible';
 const ID_CARREGANDO = 'carregando';
 const ID_CONTADOR = 'contador';
+const BTN_MOSTRAR_TUDO = 'mostrarTudo';
 const MENSAGENS = {
     sucesso: {
         texto: 'Combinação correta',
@@ -103,6 +104,11 @@ static obterCodigoHtml(item){
     static limparContador(idDoIntervalo){
         clearInterval(idDoIntervalo)
         document.getElementById(ID_CONTADOR).innerHTML = ""
+    }
+
+    static configurarBotaoMostrarTudo(funcaoOnClick){
+        const btnMostrarTudo = document.getElementById(BTN_MOSTRAR_TUDO);
+        btnMostrarTudo.onclick = funcaoOnClick;
     }
 
 }; 
